@@ -37,7 +37,7 @@ SlimerJSBrowser.prototype = {
 	name: 'SlimerJS',
 
 	DEFAULT_CMD: {
-		linux: '/home/nfroidure/Bureau/slimerjs-0.8.2/slimerjs',
+		linux: 'slimerjs',
 		darwin: '/Applications/SlimerJS.app/Contents/MacOS/SlimerJS-bin',
 		win32: process.env.ProgramFiles + '\\Mozilla SlimerJS\\SlimerJS.exe'
 	},
