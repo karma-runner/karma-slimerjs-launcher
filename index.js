@@ -24,11 +24,11 @@ var SlimerJSBrowser = function(id, baseBrowserDecorator, logger, args, options) 
 		+ '\n	);'
 		+' \n};'
 		+ '\npage.open("' + url + '");\n';
-		console.log(captureCode);
+		log.debug(captureCode);
 		fs.writeFileSync(captureFile, captureCode);
 
 		// and start slimerjs
-		return [captureFile];
+		return [log.level.levelStr=='DEBUG' ? '--debug=true':'', captureFile];
 	};
 };
 
