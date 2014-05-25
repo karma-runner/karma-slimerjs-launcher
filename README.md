@@ -2,6 +2,8 @@
 
 > Launcher for SlimerJS.
 
+**Warning:** Not maintained, [claim ownership](https://github.com/nfroidure/karma-slimerjs-launcher/issues/4)
+
 ## Installation
 
 The easiest way is to keep `karma-slimerjs-launcher` as a devDependency in your `package.json`.
