@@ -1,6 +1,6 @@
 {
   "name": "karma-slimerjs-launcher",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A Karma plugin. Launcher for SlimerJS.",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,9 @@
     "slimerjs"
   ],
   "author": "Nicolas Froidure <nfroidure@elitwork.com>",
-  "dependencies": {},
+  "dependencies": {
+    "slimerjs": "^0.9.1-2"
+  },
   "peerDependencies": {
     "karma": ">=0.9"
   },
@@ -28,12 +30,13 @@
     "grunt-auto-release": "~0.0.2"
   },
   "contributors": [
-	  "Vojta Jina <vojta.jina@gmail.com>",
+    "Vojta Jina <vojta.jina@gmail.com>",
     "Friedel Ziegelmayer <friedel.ziegelmayer@gmail.com>",
     "Žilvinas Urbonas <zilvinas.urbon@gmail.com>",
     "Friedel Ziegelmayer <friedel.ziegelmayer@gmail.com>",
     "Jason Dobry <jason.dobry@gmail.com>",
     "Rob Barreca <rob.barreca@inmobi.com>",
-    "nherzing <nherzing@gmail.com>"
+    "nherzing <nherzing@gmail.com>",
+    "Sergey Dolinkov <bessdsv@mail.ru>"
   ]
 }
