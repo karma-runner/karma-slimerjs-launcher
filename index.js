@@ -2,7 +2,7 @@ var fs = require('fs');
 var path = require('path');
 
 var slimerJSExePath = function () {
-  return path.join(path.dirname( require('slimerjs').path ), '//xulrunner//xulrunner.exe');
+  return path.join(path.dirname( require('slimerjs').path ), '//xulrunner//xulrunner.exe');
 };
 
 var SlimerJSBrowser = function(id, baseBrowserDecorator, logger, args, options) {
