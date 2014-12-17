@@ -1,50 +1,81 @@
 var fs = require('fs');
+var path = require('path');
 
-var SlimerJSBrowser = function(id, baseBrowserDecorator, logger, args, options) {
-	baseBrowserDecorator(this);
+function serializeOption(value) {
+	if (typeof value === 'function') {
+		return value.toString();
+	}
+	return JSON.stringify(value);
+}
 
-	var options = args && args.options || {};
-	var log = logger.create('launcher');
-
-	this._getOptions = function(url) {
-		var self=this;
-		var command=this._getCommand();
-		// create the js file, that will open karma
-		var captureFile = self._tempDir + '/capture.js';
-		var optionsCode = Object.keys(options).map(function (key) {
-			return 'page.' + key + ' = ' + JSON.stringify(options[key]) + ';';
-		});
-		var captureCode = 'var page = require("webpage").create();\n'
-		+ optionsCode.join('\n')
-		+ '\npage.onConsoleMessage = function () {'
-		+ '\n	console.log.apply(console,'
-		+ '\n		Array.prototype.slice.call(arguments,0).forEach(function(item) {'
-		+ '\n			return JSON.stringify(item);'
-		+ '\n		})'
-		+ '\n	);'
-		+' \n};'
-		+ '\npage.open("' + url + '");\n';
-		log.debug(captureCode);
-		fs.writeFileSync(captureFile, captureCode);
-
-		// and start slimerjs
-		return [log.level.levelStr=='DEBUG' ? '--debug=true':'', captureFile];
-	};
+var slimerDir = function () {
+	var slimerSource = require('slimerjs').path;
+	return path.dirname( slimerSource );
 };
 
+var slimerJSExePath = function () {
+	return path.join(slimerDir(), '/xulrunner/xulrunner.exe');
+};
+
+var isWindows = function () {
+	return /^win/.test(process.platform);
+};
+
+var windowsFlags = function (tempDir) {
+	return [
+		'-app', path.join(slimerDir(), '/application.ini'),
+		'-profile', path.join(tempDir, '/slimerjs-profile'),
+		'-attach-console',
+		'-no-remote'
+	];
+};
+
+var SlimerJSBrowser = function(baseBrowserDecorator, config, args) {
+	baseBrowserDecorator(this);
+
+	var options = args && args.options || config && config.options || {};
+	var flags = args && args.flags || config && config.flags || [];
+
+	this._start = function(url) {
+		// Create the js file that will open Karma
+		var captureFile = path.join(this._tempDir, '/capture.js');
+		var optionsCode = Object.keys(options).map(function (key) {
+			if (key !== 'settings') { // settings cannot be overridden, it should be extended!
+				return 'page.' + key + ' = ' + serializeOption(options[key]) + ';';
+			}
+		});
+
+		if (options.settings) {
+			optionsCode = optionsCode.concat(Object.keys(options.settings).map(function (key) {
+				return 'page.settings.' + key + ' = ' + serializeOption(options.settings[key]) + ';';
+			}));
+		}
+
+		var captureCode = 'var page = require("webpage").create();\n' +
+						  optionsCode.join('\n') + '\npage.open("' + url + '");\n';
+		fs.writeFileSync(captureFile, captureCode);
+
+		if (isWindows()) flags = flags.concat(windowsFlags(this._tempDir));
+		flags = flags.concat(captureFile);
+
+		// Start SlimerJS
+		this._execCommand(this._getCommand(), flags);
+	};
+
+};
 
 SlimerJSBrowser.prototype = {
 	name: 'SlimerJS',
 
 	DEFAULT_CMD: {
-		linux: 'slimerjs',
-		darwin: '/Applications/SlimerJS.app/Contents/MacOS/SlimerJS-bin',
-		win32: process.env.ProgramFiles + '\\Mozilla SlimerJS\\SlimerJS.exe'
+		linux: require( 'slimerjs' ).path,
+		darwin: require( 'slimerjs' ).path,
+		win32: slimerJSExePath()
 	},
-	ENV_CMD: 'SLIMERJSLAUNCHER'
+	ENV_CMD: 'SLIMERJS_BIN'
 };
 
-SlimerJSBrowser.$inject = ['id', 'baseBrowserDecorator', 'logger', 'args', 'config.slimerjsLauncher'];
+SlimerJSBrowser.$inject = ['baseBrowserDecorator', 'config.slimerjsLauncher', 'args'];
 
 // PUBLISH DI MODULE
 module.exports = {'launcher:SlimerJS': ['type', SlimerJSBrowser]};
