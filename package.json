@@ -37,12 +37,11 @@
     "load-grunt-tasks": "^3.3.0"
   },
   "contributors": [
-    "Vojta Jina <vojta.jina@gmail.com>",
-    "Friedel Ziegelmayer <friedel.ziegelmayer@gmail.com>",
-    "Žilvinas Urbonas <zilvinas.urbon@gmail.com>",
-    "Friedel Ziegelmayer <friedel.ziegelmayer@gmail.com>",
-    "Jason Dobry <jason.dobry@gmail.com>",
-    "Rob Barreca <rob.barreca@inmobi.com>",
-    "nherzing <nherzing@gmail.com>"
+    "Nicolas Froidure <nicolas_froidure@elitwork.com>",
+    "Aymeric Beaumet <aymeric.beaumet@gmail.com>",
+    "hashchange <heim@zeilenwechsel.de>",
+    "root <root@production.ewk>",
+    "Viktor Nagy <viktor.nagy@gmail.com>",
+    "Aymeric Beaumet <aymeric@beaumet.me>"
   ]
 }
