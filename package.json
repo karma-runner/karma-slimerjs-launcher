@@ -38,10 +38,12 @@
   },
   "contributors": [
     "Nicolas Froidure <nicolas_froidure@elitwork.com>",
-    "Aymeric Beaumet <aymeric.beaumet@gmail.com>",
-    "hashchange <heim@zeilenwechsel.de>",
-    "root <root@production.ewk>",
+    "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
+    "Matt Lewis <mattlewis92@users.noreply.github.com>",
     "Viktor Nagy <viktor.nagy@gmail.com>",
+    "hashchange <heim@zeilenwechsel.de>",
+    "Aymeric Beaumet <aymeric.beaumet@gmail.com>",
+    "root <root@production.ewk>",
     "Aymeric Beaumet <aymeric@beaumet.me>"
   ]
 }
