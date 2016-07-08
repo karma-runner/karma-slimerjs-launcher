@@ -1,3 +1,13 @@
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/nfroidure/karma-slimerjs-launcher/compare/v1.0.0...v1.1.0) (2016-07-08)
+
+
+### Bug Fixes
+
+* upgrade to latest slimerjs version ([49da0cb](https://github.com/nfroidure/karma-slimerjs-launcher/commit/49da0cb))
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/nfroidure/karma-slimerjs-launcher/compare/v0.2.0...v1.0.0) (2016-05-04)
 
