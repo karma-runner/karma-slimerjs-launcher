@@ -37,13 +37,15 @@
     "load-grunt-tasks": "^3.3.0"
   },
   "contributors": [
-    "Nicolas Froidure <nicolas_froidure@elitwork.com>",
     "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
-    "Matt Lewis <mattlewis92@users.noreply.github.com>",
+    "Mark Ethan Trostler <mark@zzo.com>",
+    "Nicolas Froidure <nicolas_froidure@elitwork.com>",
     "Viktor Nagy <viktor.nagy@gmail.com>",
     "hashchange <heim@zeilenwechsel.de>",
     "Aymeric Beaumet <aymeric.beaumet@gmail.com>",
     "root <root@production.ewk>",
-    "Aymeric Beaumet <aymeric@beaumet.me>"
+    "Aymeric Beaumet <aymeric@beaumet.me>",
+    "Matt Lewis <matthew.lewis@socialsignin.co.uk>",
+    "Matt Lewis <mattlewis92@users.noreply.github.com>"
   ]
 }
