@@ -17,7 +17,7 @@
   ],
   "author": "Nicolas Froidure <nfroidure@elitwork.com>",
   "dependencies": {
-    "slimerjs": "0.9.6-2"
+    "slimerjs": "~0.906.1"
   },
   "peerDependencies": {
     "karma": ">=0.9"
