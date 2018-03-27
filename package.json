@@ -16,7 +16,9 @@
     "slimerjs"
   ],
   "author": "Nicolas Froidure <nfroidure@elitwork.com>",
-  "dependencies": {},
+  "dependencies": {
+    "slimerjs": "^1.0.0"
+  },
   "peerDependencies": {
     "karma": ">=0.9"
   },
@@ -32,8 +34,7 @@
     "grunt-conventional-github-releaser": "^0.5.0",
     "grunt-eslint": "^17.2.0",
     "grunt-npm": "^0.0.2",
-    "load-grunt-tasks": "^3.3.0",
-    "slimerjs": "^1.0.0"
+    "load-grunt-tasks": "^3.3.0"
   },
   "contributors": [
     "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
