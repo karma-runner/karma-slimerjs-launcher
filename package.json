@@ -1,6 +1,6 @@
 {
   "name": "karma-slimerjs-launcher",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "A Karma plugin. Launcher for SlimerJS.",
   "main": "index.js",
   "scripts": {
@@ -16,9 +16,7 @@
     "slimerjs"
   ],
   "author": "Nicolas Froidure <nfroidure@elitwork.com>",
-  "dependencies": {
-    "slimerjs": "~0.906.1"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "karma": ">=0.9"
   },
@@ -34,7 +32,8 @@
     "grunt-conventional-github-releaser": "^0.5.0",
     "grunt-eslint": "^17.2.0",
     "grunt-npm": "^0.0.2",
-    "load-grunt-tasks": "^3.3.0"
+    "load-grunt-tasks": "^3.3.0",
+    "slimerjs": "^1.0.0"
   },
   "contributors": [
     "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
