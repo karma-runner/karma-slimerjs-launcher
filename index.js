@@ -8,28 +8,6 @@ function serializeOption (value) {
   return JSON.stringify(value)
 }
 
-var slimerDir = function () {
-  var slimerSource = require('slimerjs').path
-  return path.dirname(slimerSource)
-}
-
-var slimerJSExePath = function () {
-  return path.join(slimerDir(), '/xulrunner/xulrunner.exe')
-}
-
-var isWindows = function () {
-  return /^win/.test(process.platform)
-}
-
-var windowsFlags = function (tempDir) {
-  return [
-    '-app', path.join(slimerDir(), '/application.ini'),
-    '-profile', path.join(tempDir, '/slimerjs-profile'),
-    '-attach-console',
-    '-no-remote'
-  ]
-}
-
 var SlimerJSBrowser = function (baseBrowserDecorator, config, args) {
   baseBrowserDecorator(this)
 
@@ -55,7 +33,6 @@ var SlimerJSBrowser = function (baseBrowserDecorator, config, args) {
       optionsCode.join('\n') + '\npage.open("' + url + '");\n'
     fs.writeFileSync(captureFile, captureCode)
 
-    if (isWindows()) flags = flags.concat(windowsFlags(this._tempDir))
     flags = flags.concat(captureFile)
 
     // Start SlimerJS
@@ -69,7 +46,7 @@ SlimerJSBrowser.prototype = {
   DEFAULT_CMD: {
     linux: require('slimerjs').path,
     darwin: require('slimerjs').path,
-    win32: slimerJSExePath()
+    win32: path.join(path.dirname(require('slimerjs').path), '/slimerjs.bat')
   },
   ENV_CMD: 'SLIMERJS_BIN'
 }
